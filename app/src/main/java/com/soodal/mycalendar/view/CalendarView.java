@@ -18,6 +18,7 @@ public class CalendarView extends CTCalendarView {
 
     private Oneday basisDay;
     private int during;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
