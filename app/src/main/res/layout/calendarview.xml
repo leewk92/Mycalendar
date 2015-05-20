@@ -18,7 +18,7 @@
                 android:layout_width="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/calendar_left"
+
                 />
             <TextView android:text=""
                        android:id="@+id/CalendarMonthTxt"
@@ -35,7 +35,7 @@
                 android:layout_width="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/calendar_right"
+
                 />
  
     </LinearLayout>

@@ -13,11 +13,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TableRow.LayoutParams;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // 원본 : http://funpython.com/blog/59?category=2
 // 수정 : 한수댁
@@ -271,7 +275,7 @@ public class CTCalendarView extends Activity implements OnClickListener {
 
                                 //Log.d("hahaha", oneday[mSelect].getMonth()+"-"+ oneday[mSelect].getDay());
 
-                                onTouched(oneday[mSelect]);
+                                onTouched(mSelect, oneday);
                             }
                             return false;
                         }
@@ -350,9 +354,30 @@ public class CTCalendarView extends Activity implements OnClickListener {
     /**
      * 서브 클래스에서 오버라이드 해서 터치한 날짜 입력 받기
      * @param oneday
+     * @param mselect
      */
-    protected void onTouched(Oneday oneday){
+    protected void onTouched(int mselect, Oneday[] oneday){
 
+
+        int maxId = daylist.size();
+        int transRowNum=0;
+        int startOfTransId = ((mselect+7)/7)*7;
+        Oneday[][] transdowndays = new Oneday[7][7];
+        for (int rowNum=0; rowNum<2; rowNum++) {
+            if(maxId - startOfTransId <= rowNum*7)
+                break;
+            for (int i = 0; i < 7; i++) {
+                transdowndays[rowNum][i] = oneday[startOfTransId + i + rowNum*7];
+            }
+            transRowNum=rowNum;
+        }
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.openoneday);
+        Toast.makeText(this,String.valueOf(mselect),Toast.LENGTH_LONG).show();
+        for(int rowNum=0; rowNum<transRowNum; rowNum++) {
+            for (int i = 0; i < 7; i++) {
+                transdowndays[rowNum][i].setAnimation(anim);
+            }
+        }
     }
 
     /**

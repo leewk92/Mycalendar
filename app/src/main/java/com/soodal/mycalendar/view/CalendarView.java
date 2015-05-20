@@ -3,6 +3,7 @@ package com.soodal.mycalendar.view;
 import com.soodal.mycalendar.R;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 
 import android.app.AlertDialog;
@@ -12,6 +13,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 public class CalendarView extends CTCalendarView {
@@ -43,8 +46,12 @@ public class CalendarView extends CTCalendarView {
         }
     }
 
-    @Override
+ /*   @Override
     protected void onTouched(Oneday touchedDay){
+
+
+
+
 
         if(isInside(touchedDay, basisDay, during)){
             Calendar cal = Calendar.getInstance();
@@ -75,7 +82,7 @@ public class CalendarView extends CTCalendarView {
         builder.setNegativeButton("아니오", null);
         builder.show();
     }
-
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
